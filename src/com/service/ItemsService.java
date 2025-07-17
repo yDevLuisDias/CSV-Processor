@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import com.model.ItemsEntity;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.lang.Double.parseDouble;
@@ -26,30 +27,55 @@ public class ItemsService {
 
         File file = new File(path);
         System.out.println("arquivo : " + file.getName());
+
         try(BufferedReader bf = new BufferedReader(new FileReader(path))){
             String line = bf.readLine();
 
+            int i = 0;
+            List<Long> lId = new ArrayList<>();
+            List<String> sName = new ArrayList<>();
+
             while((line = bf.readLine()) != null){
+                var data = line.split(",");
+
                 ItemsEntity items = getItemsEntity(line);
-                if (items != null){
+
+                if (items == null){
+                    i++;
+
+                    if (!data[0].isBlank()){
+                        try{
+                            Long id =parseLong(data[0]);
+                            lId.add(id);
+
+                        }catch (NumberFormatException e){
+                            System.out.println("Error : " + e.getMessage());
+                        }
+                    }else {
+                        sName.add(data[1]);
+                    }
+
+                }else {
                     list.add(items);
                 }
-//                System.out.println(items);
-//                System.out.println("\n" + "<---- <> ---->");
+
+                System.out.println(items);
+                System.out.println("\n" + "<---- <> ---->");
             }
+
+            System.out.print("Quantidade de itens que retornaram erro : " + i
+                    + "\n" + "id's que retornaram null : " + Arrays.toString(lId.toArray())
+            );
+            if (!sName.isEmpty()){
+                System.out.println("\n" + "itens que retornaram null : "
+                        + Arrays.toString(sName.toArray()));
+            }
+
         } catch (IOException e) {
             System.out.println("Error : " + e.getMessage());
         }
 
         return list;
-    }
-
-    public void updateItems(){
-        List<ItemsEntity> list = readItems();
-
-        list.size();
-
-        System.out.println(list);
     }
 
     private ItemsEntity getItemsEntity(String line) {
