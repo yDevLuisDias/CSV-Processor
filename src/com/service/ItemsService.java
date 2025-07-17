@@ -16,14 +16,18 @@ import static java.lang.Long.parseLong;
 public class ItemsService {
 
     private final ValidationsService validations;
+    private final ExportService export;
 
-    public ItemsService(ValidationsService validations) {
+    List <ItemsEntity> validList = new ArrayList<>();
+    List <ItemsEntity> invalidList = new ArrayList<>();
+
+    public ItemsService(ValidationsService validations, ExportService export) {
         this.validations = validations;
+        this.export = export;
     }
 
     public List<ItemsEntity> readItems(){
         String path = "./src/com/data/file.csv";
-        List <ItemsEntity> list = new ArrayList<>();
 
         File file = new File(path);
         System.out.println("arquivo : " + file.getName());
@@ -56,12 +60,15 @@ public class ItemsService {
                     }
 
                 }else {
-                    list.add(items);
+                    validList.add(items);
                 }
 
                 System.out.println(items);
                 System.out.println("\n" + "<---- <> ---->");
             }
+
+            export.validPath(validList, "./src/com/data/valid.csv");
+            export.invalidPath(invalidList, "./src/com/data/error.csv");
 
             System.out.print("Quantidade de itens que retornaram erro : " + i
                     + "\n" + "id's que retornaram null : " + Arrays.toString(lId.toArray())
@@ -74,12 +81,13 @@ public class ItemsService {
         } catch (IOException e) {
             System.out.println("Error : " + e.getMessage());
         }
-
-        return list;
+        return validList;
     }
 
     private ItemsEntity getItemsEntity(String line) {
         var data = line.split(",");
+
+        ExportService export = new ExportService();
 
         List<String> error = validations.validationItems(data[0],data[1],data[2],data[3],data[4]);
 
@@ -106,9 +114,31 @@ public class ItemsService {
                 System.out.println("Error : " + e.getMessage());
             }
         } else {
+            try {
+                ItemsEntity errorItem = new ItemsEntity(
+                        data[0].isBlank() ? 0 : parseLong(data[0]),
+                        data[1].isBlank() ? "vazio" : data[1],
+                        data[2].isBlank() ? 0.0 : parseDouble(data[2]),
+                        data[3].isBlank() ? "vazio" : data[3],
+                        data[4].isBlank() ? 0 : parseInt(data[4])
+                );
+
+                invalidList.add(errorItem);
+
+            } catch (NumberFormatException e) {
+                ItemsEntity errorItem = new ItemsEntity(
+                        0,
+                        data[1].isBlank() ? "vazio" : data[1],
+                        0.0,
+                        data[3].isBlank() ? "vazio" : data[3],
+                        0
+                );
+                invalidList.add(errorItem);
+            }
             if ( !id.isBlank()){
                 System.out.println("Error no id : " + id);
-            }else {
+
+            }else if (!data[1].isBlank()){
                 System.out.println("Error no item : " + data[1]);
             }
             for (String outPutError : error) {
@@ -117,5 +147,4 @@ public class ItemsService {
         }
         return null;
     }
-
 }

@@ -51,7 +51,7 @@ public class ValidationsService {
         }
 
         //validar quantity
-        if (quantity == null || quantity.isEmpty()){
+        if (quantity == null || quantity.isBlank()){
             error.add("Quantidade está vazia");
         } else{
             try {

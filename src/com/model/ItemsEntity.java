@@ -56,6 +56,10 @@ public class ItemsEntity {
         this.quantity = quantity;
     }
 
+    public String toLine() {
+        return this.id + "," + this.name + "," + this.price + "," + this.category + "," + this.quantity;
+    }
+
     @Override
     public String toString() {
         return "Item{" +

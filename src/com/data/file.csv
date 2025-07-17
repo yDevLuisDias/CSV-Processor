@@ -3,7 +3,7 @@ id,name,price,category,quantity
 2,Mouse Sem Fio,,Perifericos,250
 3,Teclado Mecanico RGB,450.00,Perifericos,-5
 4,Monitor Ultrawide 34,1800.00,Eletronicos,30
-,Webcam Full HD,200.00,Acessorios,150
+5,,,,150
 6,,300.00,Audio,100
 7,Impressora Laser Colorida,ABC,Eletronicos,20
 8,Cadeira Ergonomica,650.00,,35
