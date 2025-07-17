@@ -1,7 +1,9 @@
 
 out/
-.idea/
 doc/
+
+.idea/
+.DS_Store Thumbs.db
+
 *.class
 *.log
-.DS_Store Thumbs.db
