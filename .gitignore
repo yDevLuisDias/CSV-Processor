@@ -1,9 +1,4 @@
-
 out/
 doc/
-
-.idea/
-.DS_Store Thumbs.db
-
 *.class
 *.log
