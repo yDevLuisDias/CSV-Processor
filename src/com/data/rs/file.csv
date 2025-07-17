@@ -1,0 +1,21 @@
+id,name,price,category,quantity
+1,Laptop Gamer,5500.00,Eletronicos,10
+2,Mouse Sem Fio,,Perifericos,250
+3,Teclado Mecanico RGB,450.00,Perifericos,-5
+4,Monitor Ultrawide 34,1800.00,Eletronicos,30
+,Webcam Full HD,200.00,Acessorios,150
+6,,300.00,Audio,100
+7,Impressora Laser Colorida,ABC,Eletronicos,20
+8,Cadeira Ergonomica,650.00,,35
+9,SSD NVMe 500GB,320.00,Armazenamento,XYZ
+10,Roteador Mesh,420.00,Redes,75
+11,Placa de Video XYZ,4000.00,,wwx
+12,Processador i7,2500.00,Hardware,25
+13,Memoria RAM,480.00,Hardware,70
+14,Fonte ATX,380.00,Hardware,55
+15,Gabinete,600.00,Hardware,40
+16,Notebook Ultrafino,3800.00,Eletronicos,30
+17,Tablet Pro,950.00,Eletronicos,95
+18,Smartwatch,600.00,Vestiveis,180
+19,Caixa de Som,150.00,Audio,220
+20,Fone de Ouvido,120.00,Audio,300

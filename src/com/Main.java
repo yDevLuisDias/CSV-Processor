@@ -8,6 +8,7 @@ public class Main {
         ValidationsService validations = new ValidationsService();
         ItemsService service = new ItemsService(validations);
 
-        service.readItems();
+      //  service.readItems();
+        service.updateItems();
     }
 }

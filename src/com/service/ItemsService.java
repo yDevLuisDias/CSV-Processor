@@ -1,6 +1,7 @@
 package com.service;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import com.model.ItemsEntity;
@@ -23,6 +24,8 @@ public class ItemsService {
         String path = "./src/com/data/file.csv";
         List <ItemsEntity> list = new ArrayList<>();
 
+        File file = new File(path);
+        System.out.println("arquivo : " + file.getName());
         try(BufferedReader bf = new BufferedReader(new FileReader(path))){
             String line = bf.readLine();
 
@@ -31,14 +34,22 @@ public class ItemsService {
                 if (items != null){
                     list.add(items);
                 }
-                System.out.println(items);
-                System.out.println("\n" + "<---- <> ---->");
+//                System.out.println(items);
+//                System.out.println("\n" + "<---- <> ---->");
             }
         } catch (IOException e) {
             System.out.println("Error : " + e.getMessage());
         }
 
         return list;
+    }
+
+    public void updateItems(){
+        List<ItemsEntity> list = readItems();
+
+        list.size();
+
+        System.out.println(list);
     }
 
     private ItemsEntity getItemsEntity(String line) {
