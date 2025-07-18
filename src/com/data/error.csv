@@ -1,0 +1,9 @@
+id,name,price,category,quantity
+2,Mouse Sem Fio,0.0,Perifericos,250
+3,Teclado Mecanico RGB,450.0,Perifericos,0
+5,Error,0.0,Error,150
+6,Error,300.0,Audio,100
+7,Impressora Laser Colorida,0.0,Eletronicos,20
+8,Cadeira Ergonomica,650.0,Error,35
+9,SSD NVMe 500GB,320.0,Armazenamento,0
+11,Placa de Video XYZ,4000.0,Error,0

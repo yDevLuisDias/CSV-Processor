@@ -1,0 +1,13 @@
+id,name,price,category,quantity
+1,Laptop Gamer,5500.0,Eletronicos,10
+4,Monitor Ultrawide 34,1800.0,Eletronicos,30
+10,Roteador Mesh,420.0,Redes,75
+12,Processador i7,2500.0,Hardware,25
+13,Memoria RAM,480.0,Hardware,70
+14,Fonte ATX,380.0,Hardware,55
+15,Gabinete,600.0,Hardware,40
+16,Notebook Ultrafino,3800.0,Eletronicos,30
+17,Tablet Pro,950.0,Eletronicos,95
+18,Smartwatch,600.0,Vestiveis,180
+19,Caixa de Som,150.0,Audio,220
+20,Fone de Ouvido,120.0,Audio,300
