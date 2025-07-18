@@ -16,6 +16,9 @@ public class ItemsEntity {
         this.quantity = quantity;
     }
 
+    public ItemsEntity() {
+    }
+
     public long getId() {
         return id;
     }

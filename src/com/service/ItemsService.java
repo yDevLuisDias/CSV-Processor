@@ -89,7 +89,7 @@ public class ItemsService {
 
         ExportService export = new ExportService();
 
-        List<String> error = validations.validationItems(data[0],data[1],data[2],data[3],data[4]);
+        List<String> error = validations.validationItems(data[0],data[1],data[2], data[3],data[4]);
 
         /*
          * [0] = id
@@ -113,38 +113,26 @@ public class ItemsService {
             }catch (NumberFormatException e){
                 System.out.println("Error : " + e.getMessage());
             }
-        } else {
-            try {
-                ItemsEntity errorItem = new ItemsEntity(
-                        data[0].isBlank() ? 0 : parseLong(data[0]),
-                        data[1].isBlank() ? "vazio" : data[1],
-                        data[2].isBlank() ? 0.0 : parseDouble(data[2]),
-                        data[3].isBlank() ? "vazio" : data[3],
-                        data[4].isBlank() ? 0 : parseInt(data[4])
-                );
+        }else {
 
-                invalidList.add(errorItem);
+            ItemsEntity errorList = validations.getErrorItems(data);
 
-            } catch (NumberFormatException e) {
-                ItemsEntity errorItem = new ItemsEntity(
-                        0,
-                        data[1].isBlank() ? "vazio" : data[1],
-                        0.0,
-                        data[3].isBlank() ? "vazio" : data[3],
-                        0
-                );
-                invalidList.add(errorItem);
-            }
-            if ( !id.isBlank()){
-                System.out.println("Error no id : " + id);
+            if (errorList != null){
+                invalidList.add(errorList);
 
-            }else if (!data[1].isBlank()){
-                System.out.println("Error no item : " + data[1]);
-            }
-            for (String outPutError : error) {
-                System.out.println(" <--<!>--> " + outPutError);
+                if ( !id.isBlank()){
+                    System.out.println("Error no id : " + id);
+
+                }else if (!data[1].isBlank()){
+                    System.out.println("Error no item : " + data[1]);
+                }
+                for (String outPutError : error) {
+                    System.out.println(" <--<!>--> " + outPutError);
+                }
+                return null;
             }
         }
+
         return null;
     }
 }
