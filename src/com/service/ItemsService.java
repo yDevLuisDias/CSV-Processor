@@ -34,13 +34,14 @@ public class ItemsService {
 
         try(BufferedReader bf = new BufferedReader(new FileReader(path))){
             String line = bf.readLine();
+            var header = line.split(",");
 
             int i = 0;
             List<Long> lId = new ArrayList<>();
             List<String> sName = new ArrayList<>();
 
             while((line = bf.readLine()) != null){
-                var data = line.split(",");
+                var data = line.split(","); // = [0,1,2,3,4]
 
                 ItemsEntity items = getItemsEntity(line);
 
